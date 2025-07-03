@@ -83,8 +83,8 @@ def index():
         persen_cerai_hidup = hasil[2]
         persen_cerai_mati = hasil[3]
 
-        # Asumsikan populasi 10.000 orang untuk simulasi jumlah
-        total_populasi = 10000
+        # Asumsikan populasi 100 orang untuk simulasi jumlah
+        total_populasi = 100
         jumlah_belum_kawin = round((persen_belum_kawin / 100) * total_populasi)
         jumlah_kawin = round((persen_kawin / 100) * total_populasi)
         jumlah_cerai_hidup = round((persen_cerai_hidup / 100) * total_populasi)
