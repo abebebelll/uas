@@ -73,15 +73,18 @@ def index():
 
         # Lakukan prediksi menggunakan model
         prediction = model.predict(input_data)[0]
-
-        # Inverse scaling untuk mendapatkan nilai asli
+        
+        # Inverse scaling ke bentuk asli
         hasil = scaler.inverse_transform([prediction])[0]
-
-        # Pisahkan hasil prediksi ke dalam kategori
-        persen_belum_kawin = hasil[0]
-        persen_kawin = hasil[1]
-        persen_cerai_hidup = hasil[2]
-        persen_cerai_mati = hasil[3]
+        
+        # Batasi ke rentang 0–100 agar tidak negatif atau lebih dari 100%
+        hasil = np.clip(hasil, 0, 100)
+        
+        # Bulatkan persentase
+        persen_belum_kawin = round(hasil[0], 2)
+        persen_kawin = round(hasil[1], 2)
+        persen_cerai_hidup = round(hasil[2], 2)
+        persen_cerai_mati = round(hasil[3], 2)
 
         # Asumsikan populasi 100 orang untuk simulasi jumlah
         total_populasi = 100
